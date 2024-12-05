@@ -1,0 +1,94 @@
+<Window  xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Market"
+        x:Class="Market.ChangeItemWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="Назад" x:Name="BackBtn" HorizontalAlignment="Left" Margin="20"/>
+            <TextBlock Grid.Column="0" Text="ФИО" HorizontalAlignment="Right" Margin="0,0,20,0"/>
+        </Grid>
+
+        <Grid Grid.Row="1" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical" Grid.Column="0" Margin="10">
+                <TextBlock Text="Наименование" Margin="0,0,0,5" Width="250"/>
+                <ScrollViewer Width="250" Height="100" Margin="0,5,0,0">
+                <TextBox AcceptsReturn="True" CornerRadius="5" x:Name="ProductNameBox" Margin="0,0,0,10"/>
+            </ScrollViewer>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Column="1" Margin="10">
+                <TextBlock Text="Категория" Margin="0,0,0,5" Width="250"/>
+                <ScrollViewer Width="250" Height="100" Margin="0,5,0,0">
+                <TextBox AcceptsReturn="True" CornerRadius="5" x:Name="ProductCategoryBox" Margin="0,0,0,10"/>
+                </ScrollViewer>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Column="2" Margin="10">
+                <TextBlock Text="Поставщик" Margin="0,0,0,5" Width="250"/>
+                <ScrollViewer Width="250" Height="100" Margin="0,5,0,0">
+                <TextBox AcceptsReturn="True" CornerRadius="5" x:Name="ProductMakerBox" Margin="0,0,0,10"/>
+                </ScrollViewer>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2" HorizontalAlignment="Center">
+           <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical" Grid.Column="0" Margin="10">
+                <TextBlock Text="Количество" Margin="0,0,0,5" Width="250"/>
+                <ScrollViewer Width="250" Height="100" Margin="0,5,0,0">
+                <TextBox AcceptsReturn="True" CornerRadius="5" x:Name="ProductQuantityBox" Margin="0,0,0,10"/>
+           </ScrollViewer>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Column="1" Margin="10">
+                <TextBlock Text="Размер скидки" Margin="0,0,0,5" Width="250"/>
+                <ScrollViewer Width="250" Height="100" Margin="0,5,0,0">
+                <TextBox AcceptsReturn="True" CornerRadius="5" x:Name="ProductDiscountBox" Margin="0,0,0,10"/>
+            </ScrollViewer>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Column="2" Margin="10">
+                <TextBlock Text="Стоимость" Margin="0,0,0,5" Width="250"/>
+                <ScrollViewer Width="250" Height="100" Margin="0,5,0,0">
+                <TextBox AcceptsReturn="True" CornerRadius="5" x:Name="ProductPriceBox" Margin="0,0,0,10"/>
+           </ScrollViewer>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3" HorizontalAlignment="Center">
+           <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="10">
+                <TextBlock Text="Описание" Margin="0,0,0,5" Width="250"/>
+                <ScrollViewer Width="250" Height="100" Margin="0,0,0,5">
+                    <TextBox AcceptsReturn="True" x:Name="DescriptionTextBox"/>
+                </ScrollViewer>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Column="1" Margin="10">
+                <Button Content="Выбрать изображение" x:Name="ContentBrowsBtw" Margin="10"/>
+                <Image x:Name="SelectedImage" Width="200" Height="200" Margin="10"/>
+              </StackPanel>
+            </Grid>
+        <Grid Grid.Row="4" HorizontalAlignment="Center">
+            <Button x:Name="SaveProductSettingsBtn" Content="Сохранить изменения" Width="250"/>
+        </Grid>
+    </Grid>
+</Window>
