@@ -1,7 +1,8 @@
 <Window  xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Market"
-        x:Class="Market.ChangeItemWindow">
+        x:Class="Market.ChangeItemWindow"
+        >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -28,19 +29,19 @@
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Vertical" Grid.Column="0" Margin="10">
                 <TextBlock Text="Наименование" Margin="0,0,0,5" Width="250"/>
-                <ScrollViewer Width="250" Height="100" Margin="0,5,0,0">
+                <ScrollViewer Width="250"  Height="50" Margin="0,5,0,0">
                 <TextBox AcceptsReturn="True" CornerRadius="5" x:Name="ProductNameBox" Margin="0,0,0,10"/>
             </ScrollViewer>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Column="1" Margin="10">
                 <TextBlock Text="Категория" Margin="0,0,0,5" Width="250"/>
-                <ScrollViewer Width="250" Height="100" Margin="0,5,0,0">
+                <ScrollViewer Width="250"  Height="50" Margin="0,5,0,0">
                 <TextBox AcceptsReturn="True" CornerRadius="5" x:Name="ProductCategoryBox" Margin="0,0,0,10"/>
                 </ScrollViewer>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Column="2" Margin="10">
                 <TextBlock Text="Поставщик" Margin="0,0,0,5" Width="250"/>
-                <ScrollViewer Width="250" Height="100" Margin="0,5,0,0">
+                <ScrollViewer Width="250"  Height="50" Margin="0,5,0,0">
                 <TextBox AcceptsReturn="True" CornerRadius="5" x:Name="ProductMakerBox" Margin="0,0,0,10"/>
                 </ScrollViewer>
             </StackPanel>
@@ -54,19 +55,19 @@
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Vertical" Grid.Column="0" Margin="10">
                 <TextBlock Text="Количество" Margin="0,0,0,5" Width="250"/>
-                <ScrollViewer Width="250" Height="100" Margin="0,5,0,0">
+                <ScrollViewer Width="250"  Height="50" Margin="0,5,0,0">
                 <TextBox AcceptsReturn="True" CornerRadius="5" x:Name="ProductQuantityBox" Margin="0,0,0,10"/>
            </ScrollViewer>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Column="1" Margin="10">
                 <TextBlock Text="Размер скидки" Margin="0,0,0,5" Width="250"/>
-                <ScrollViewer Width="250" Height="100" Margin="0,5,0,0">
+                <ScrollViewer Width="250"  Height="50" Margin="0,5,0,0">
                 <TextBox AcceptsReturn="True" CornerRadius="5" x:Name="ProductDiscountBox" Margin="0,0,0,10"/>
             </ScrollViewer>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Column="2" Margin="10">
                 <TextBlock Text="Стоимость" Margin="0,0,0,5" Width="250"/>
-                <ScrollViewer Width="250" Height="100" Margin="0,5,0,0">
+                <ScrollViewer Width="250"  Height="50" Margin="0,5,0,0">
                 <TextBox AcceptsReturn="True" CornerRadius="5" x:Name="ProductPriceBox" Margin="0,0,0,10"/>
            </ScrollViewer>
             </StackPanel>
@@ -78,12 +79,12 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Margin="10">
                 <TextBlock Text="Описание" Margin="0,0,0,5" Width="250"/>
-                <ScrollViewer Width="250" Height="100" Margin="0,0,0,5">
+                <ScrollViewer Width="250"  Height="100" Margin="0,0,0,5">
                     <TextBox AcceptsReturn="True" x:Name="DescriptionTextBox"/>
                 </ScrollViewer>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Column="1" Margin="10">
-                <Button Content="Выбрать изображение" x:Name="ContentBrowsBtw" Margin="10"/>
+                <Button Content="Выбрать изображение" x:Name="ContentBrowsBtw" Margin="10,0,0,0"/>
                 <Image x:Name="SelectedImage" Width="200" Height="200" Margin="10"/>
               </StackPanel>
             </Grid>

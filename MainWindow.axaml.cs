@@ -5,6 +5,8 @@ using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using Avalonia.Interactivity; 
 using System.Linq;
+using Avalonia.Controls.Primitives;
+using Avalonia.Input;
 
 namespace Market
 {
@@ -12,19 +14,37 @@ namespace Market
     {
          public List<Product> Products { get; set; } = new List<Product>();
         public List<Product> FilteredProducts { get; set; } = new List<Product>();
+        public List<Product> totototo { get; set; } = new List<Product>();
+        public List<string> TakedItems = new List<string>();
+        public int? scenary { get; set; }
         public int Role;
         public int Idd;
+        public int? Scenary;
        public MainWindow(int id,int role)
        {
+        
            InitializeComponent();
+
            Idd = id;
+           NameMaker();
+           Scenary= scenary;
+
+           
+        if(scenary!=null)
+        {
+            this.Hide();
+            new LoginWindow().Show();
+            this.Close();
+        }
+
            Role = role;
            Products = ListCreate();
+           totototo = Products;
            FilteredProducts = new List<Product>(Products); // Изначально все продукты видимы
            DataContext = this; // Устанавливаем контекст данных
            fff.ItemsSource = FilteredProducts; // Устанавливаем источник данных для ListBox
-        SetButtonText();
             
+
             CBoxMaker.Items.Add("По умолчанию");           
             CBoxMaker.Items.Add("Webber");
             CBoxMaker.Items.Add("Luminarc");
@@ -32,6 +52,7 @@ namespace Market
             CBoxMaker.Items.Add("Эмаль");
             CBoxMaker.Items.Add("Solaris");
             CBoxMaker.Items.Add("Galaxy");
+            CBoxMaker.Items.Add("Tefal");
             CBoxMaker.Items.Add("По умолчанию");
 
 
@@ -39,7 +60,7 @@ namespace Market
             CBoxCategory.Items.Add("Посуда");
             CBoxCategory.Items.Add("Сковорода");
             CBoxCategory.Items.Add("Сервиз");
-            CBoxCategory.Items.Add("Кострюля");
+            CBoxCategory.Items.Add("Кострюли");
 
             CBoxPrice.Items.Add("По умолчанию");
             CBoxPrice.Items.Add("По возрастанию");
@@ -51,13 +72,68 @@ namespace Market
             
            
         }
-        public void SetButtonText(){
-            if(Role == 1) BtnMainFormItem.Content = "Редактировать";
-            if(Role == 2) BtnMainFormItem.Content = "Просмотреть";
-            if(Role == 3) BtnMainFormItem.Content = "Добавить в карзину";
-        }
+        public void NameMaker()
+{
+    string connectionString = "Server=localhost;Database=shopDB;User Id=root;Password=;";
+    string fullName = "ФИО"; // Инициализируем с "ФИО"
 
-        public List<Product> ListCreate()
+    try
+    {
+        using (MySqlConnection connection = new MySqlConnection(connectionString))
+        {
+            connection.Open();
+
+            // Используем параметризованный запрос
+            using (MySqlCommand command = new MySqlCommand("SELECT UserSurname, UserName, UserPatronymic FROM user WHERE UserID = @id", connection))
+            {
+                command.Parameters.AddWithValue("@id", Idd);
+
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        // Форматируем ФИО
+                        Console.WriteLine("читает");
+                        fullName = $"{reader.GetString(0)} {reader.GetString(1)} {reader.GetString(2)}";
+                    }
+                     Console.WriteLine("читает");
+                }
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        // Обработка исключений (например, вывод сообщения об ошибке)
+        Console.WriteLine($"Ошибка: {ex.Message}");
+    }
+
+    fullUserName.Text = fullName; // Обновляем текст
+}
+       
+      private void ButtonStorage_Click(object sender, RoutedEventArgs e)
+      {
+        this.Hide();
+        new Orderr(Idd,Role,TakedItems).Show();
+        this.Close();
+       }
+        private async void fullUserNameTextBox_Pressed(object sender, PointerPressedEventArgs e)
+        {
+          var mb = new MBoxExitAsc(Idd,Role);
+          mb.RoleChanged += (newRole) => 
+            {
+                Scenary = newRole; // Обновляем значение Role в MainWindow
+                // Дополнительная логика, если необходимо
+            };
+          await mb.ShowDialog(this);
+
+          if(Scenary!=null){
+
+            this.Hide();
+            new LoginWindow().Show();
+            this.Close();
+          }
+        }
+       public List<Product> ListCreate()
         {
             string connectionString = "Server=localhost;Database=shopDB;User Id=root;Password=;";
             List<Product> list = new List<Product>();
@@ -103,7 +179,10 @@ namespace Market
     if(Role == 3){
         if (sender is Button button && button.CommandParameter is Product product)
         {
-            Console.WriteLine($"Артикул: {product.ProductArticleNumber}");
+            
+            TakedItems.Add(product.ProductArticleNumber);
+            
+
         }
     }
     if(Role==2){

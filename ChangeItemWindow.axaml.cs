@@ -45,17 +45,24 @@ namespace Market
                         ProductNameBox.Text =reader.GetString(1);
                         ProductCategoryBox.Text =reader.GetString(3);
                         ProductMakerBox.Text = reader.GetString(5);
-                        ProductQuantityBox.Text=reader.GetInt32(8);
-                        ProductDiscountBox.Text=reader.GetInt32(7);
-                        ProductPriceBox.Text= reader.GetFloat(6);
+                        ProductQuantityBox.Text=Convert.ToString(reader.GetInt32(8));
+                        ProductDiscountBox.Text=Convert.ToString(reader.GetInt32(7));
+                        ProductPriceBox.Text= Convert.ToString(reader.GetFloat(6));
                         DescriptionTextBox.Text = reader.GetString(2);
-                        
+                        try{
                         byte[] productPhoto = (byte[])reader["ProductPhoto"];
                         using (var stream = new MemoryStream(productPhoto))
                         {
                             selectedImageBitmap = new Bitmap(stream);
                         }
                         SelectedImage.Source = selectedImageBitmap;
+                        }
+                         catch (Exception ex)
+                         {
+                 Console.WriteLine($"Error image show: {ex.Message}"); // Выводим сообщение об ошибке
+              
+
+                         }
 
                            
                         

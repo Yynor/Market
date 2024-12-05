@@ -25,10 +25,19 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [/Users/new/Desktop/Projects/Market/ChangeItemWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[/Users/new/Desktop/Projects/Market/ChoosePickupPoint.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [/Users/new/Desktop/Projects/Market/LoginWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [/Users/new/Desktop/Projects/Market/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/new/Desktop/Projects/Market/MBoxExitAsc.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/new/Desktop/Projects/Market/Orderr.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [/Users/new/Desktop/Projects/Market/RegWindow.axaml]

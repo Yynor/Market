@@ -1,6 +1,12 @@
 using Avalonia.Media.Imaging;
 using System;
 
+using System.ComponentModel;
+
+
+
+    
+
 namespace Market
 {
     public class User
@@ -52,5 +58,47 @@ namespace Market
                 ProductStatus = _ProductStatus;
             }
             
+    }
+
+   
+
+    public class UserItemStorage : INotifyPropertyChanged
+    {
+        private int _itemCount;
+
+        public string ItemArticul { get; set; }
+        public string ItemName { get; set; }
+        public string ItemDescription { get; set; }
+        public int ItemPrice { get; set; }
+        public int ItemCount
+        {
+            get => _itemCount;
+            set
+            {
+                if (_itemCount != value)
+                {
+                    _itemCount = value;
+                    OnPropertyChanged(nameof(ItemCount));
+                }
+            }
+        }
+        public Bitmap ItemPhoto { get; set; }
+
+        public UserItemStorage(string articul, string name, string description, int price, int count, Bitmap photo)
+        {
+            ItemArticul = articul;
+            ItemName = name;
+            ItemDescription = description;
+            ItemPrice = price;
+            ItemCount = count;
+            ItemPhoto = photo;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

@@ -1,0 +1,76 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Market"
+        x:Class="Market.Orderr">
+<Grid >
+    <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10">
+        <Button x:Name="ExitBtn" Click="Button_Click"  Background="#76E383" 
+            Foreground="White" Width="50" Height="20"/>
+    </Grid>
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Right">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/> <!-- Занимает оставшееся пространство -->
+        <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <TextBlock Grid.Row="0" x:Name="GeneralPrice" Text="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+    <TextBlock Grid.Row="1" x:Name="PickUpp"
+     Text="Выбран ближайсший к вам" 
+     PointerPressed="Pressed"
+     TextWrapping="Wrap"
+     MaxWidth="200"
+      />
+
+    <Button Grid.Row="2" x:Name="BntMakeZakaz" 
+            Content="Оформить заказ" 
+            HorizontalAlignment="Right" 
+            Click="BntMakeZakaz_Click" 
+            Background="#76E383" 
+            Foreground="White"
+            Margin="0,30,30,30"
+            Width="150" Height="35" 
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"/>
+    </Grid>
+
+    
+
+        <ScrollViewer Margin="50,50,235,50">
+            <StackPanel>
+                <ListBox Name="fff">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate x:DataType="local:UserItemStorage">
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                              <Image Source="{Binding ItemPhoto}" 
+                                    MaxWidth="150"  
+                                    MaxHeight="150" 
+                                    Margin="5" 
+                                    Stretch="Uniform" 
+                                    HorizontalAlignment="Stretch" 
+                                    VerticalAlignment="Stretch"/> 
+                                    <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="400"/>
+                                        <ColumnDefinition Width="10*"/>  <!-- Занимает оставшееся пространство -->
+                                        <ColumnDefinition Width="150"/> <!-- Для кнопки и текста -->
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0">
+                                        <TextBlock Text="{Binding ItemName}" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding ItemDescription}"/>
+                                        <TextBlock Text="{Binding ItemPrice, StringFormat='{}{0:C}'}"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+                                        <Button Content="+" Click="PluseButton_Click" CommandParameter="{Binding}"/>
+                                        <TextBlock Text="{Binding ItemCount}" Foreground="Black" Margin="5,0,0,0"/>
+                                        <Button Content="-" Click="MinuseButton_Click" CommandParameter="{Binding}"/>
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
